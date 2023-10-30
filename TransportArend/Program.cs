@@ -1,4 +1,10 @@
-﻿using TransportArend.Classes;
+﻿using System.Collections;
+using System.Security.Cryptography.X509Certificates;
+using TransportArend.Classes;
+
+
+bool trigger = true;
+int cycle = 0;
 
 Car lada = new Car("Лада Калина", "Черный", 150);
 Car mercedes = new Car("Мерседес Бенз", "Голубой", 200);
@@ -24,18 +30,55 @@ List<Transport> transports = new List<Transport>()
         techteam
     };
 
-void PrintList()
+do
 {
+    if(cycle == 0)
+    {
+        Console.WriteLine("Список доступных авто:");
+        PrintList(SortList());
+        cycle++;
+    }
+
+    Console.WriteLine("Выберите транспорт");
+    int choiceTransport = Convert.ToInt32(Console.ReadLine());
+
+
+    Console.WriteLine($"Вы хотите арендовать {SortList()[choiceTransport].Model}?");
+    string yesNo = Console.ReadLine();
+    switch(yesNo)
+    {
+        case "Да":
+            SortList()[choiceTransport].Arend(); break;
+        case "Нет":
+            break;
+    }
+} while (trigger);
+
+List<Transport> SortList()
+{
+    List<Transport> sortedList = new List<Transport>();
     for (int i = 0; i < 5; i++)
     {
         foreach (Transport transport in transports)
         {
             if (i == transport.GetClass())
             {
-                transport.Print();
+                sortedList.Add(transport);
             }
         }
     }
+    return sortedList;
 }
 
-PrintList();
+void PrintList(List<Transport> list)
+{
+    int i = 1;
+    foreach(Transport transport in list)
+    {
+        Console.Write(i + ". ");
+        transport.Print();
+        Console.WriteLine();
+        i++;
+    }
+}
+

@@ -13,7 +13,7 @@ namespace TransportArend.Classes
         public override string Motor { get { return "ДВС"; } set => base.Motor = value; }
         public override void Print()
         {
-            Console.WriteLine($"Машина {Model}, цвет: {Colour}, средняя скорость: {Speed} {IsArended}");
+            Console.Write($"Машина {Model}, цвет: {Colour}, средняя скорость: {Speed} {IsArended}");
         }
 
         public override void Delivery()
