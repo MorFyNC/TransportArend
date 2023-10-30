@@ -13,7 +13,7 @@ namespace TransportArend.Classes
         public string Speed { get; set; }
         public string Colour { get; set; }
         public string Model { get; set; }
-        public bool IsArended { get; set; }
+        public string IsArended { get; set; }
         public abstract int NumOfWheels { get; set; }
         public virtual string Motor
         {
@@ -27,5 +27,17 @@ namespace TransportArend.Classes
         {
             Console.WriteLine("Данный транспорт не доставляется");
         }
+        public void Arend()
+        {
+            Console.WriteLine($"Модель {Model} была арендована");
+            IsArended = "арендована";
+        }
+        
+        public void Return()
+        {
+            Console.WriteLine($"Модель {Model} возвращена");
+            IsArended = "не арендована";
+        }
+
     }
 }
