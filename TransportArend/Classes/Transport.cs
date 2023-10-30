@@ -10,7 +10,7 @@ namespace TransportArend.Classes
     {
         protected string motor = "None";
         public abstract string DriveLicense { get; set; }
-        public string Speed { get; set; }
+        public int Speed { get; set; }
         public string Colour { get; set; }
         public string Model { get; set; }
         public string IsArended { get; set; }
@@ -39,5 +39,6 @@ namespace TransportArend.Classes
             IsArended = "не арендована";
         }
 
+        public abstract int GetClass();
     }
 }
